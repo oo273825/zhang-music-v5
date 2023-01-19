@@ -3,7 +3,7 @@ const { TrackUtils } = require("erela.js");
 
 module.exports = {
   name: "remove",
-  description: `Remove a song from the queue`,
+  description: `從隊列中刪除歌曲`,
   usage: "[number]",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -24,12 +24,12 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **現在沒有播放的曲目...**"
       );
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel to use this command!**"
+        "❌ | **你必須先加入語音頻道!**"
       );
     if (
       message.guild.me.voice.channel &&
@@ -37,22 +37,22 @@ module.exports = {
     )
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in the same voice channel as me to use this command!**"
+        "❌ | **你必須和張先生在同一個語音頻道才能使用這個命令!**"
       );
 
     if (!player.queue || !player.queue.length || player.queue.length === 0)
-      return message.channel.send("There is nothing in the queue to remove");
+      return message.channel.send("隊列中沒有需要刪除的曲目");
     let rm = new MessageEmbed()
       .setDescription(
-        `✅ **|** Removed track **\`${Number(args[0])}\`** from the queue!`
+        `✅ **|** 從隊列中移除曲目 **\`${Number(args[0])}\`** !`
       )
       .setColor("GREEN");
     if (isNaN(args[0]))
       rm.setDescription(
-        `**Usage - **${client.botconfig.prefix}\`remove [track]\``
+        `**用法 - **${client.botconfig.prefix}\`remove [track]\``
       );
     if (args[0] > player.queue.length)
-      rm.setDescription(`The queue has only ${player.queue.length} songs!`);
+      rm.setDescription(`隊列中只有 ${player.queue.length} 首歌曲!`);
     await message.channel.send(rm);
     player.queue.remove(Number(args[0]) - 1);
   },
@@ -64,7 +64,7 @@ module.exports = {
         value: "[track]",
         type: 4,
         required: true,
-        description: "Remove a song from the queue",
+        description: "從隊列中刪除歌曲",
       },
     ],
     /**
@@ -82,12 +82,12 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **現在沒有播放的曲目...**"
         );
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **你必須先加入語音頻道!**"
         );
       if (
         guild.me.voice.channel &&
@@ -95,20 +95,20 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          "❌ | **You must be in the same voice channel as me to use this command!**"
+          "❌ | **你必須和張先生在同一個語音頻道才能使用這個命令!**"
         );
 
       if (!player.queue || !player.queue.length || player.queue.length === 0)
-        return client.sendTime("❌ | **Nothing is playing right now...**");
+        return client.sendTime("❌ | **現在沒有播放的曲目...**");
       let rm = new MessageEmbed()
         .setDescription(
-          `✅ | **Removed track** \`${Number(args[0])}\` from the queue!`
+          `✅ | **從隊列中移除曲目** \`${Number(args[0])}\` !`
         )
         .setColor("GREEN");
       if (isNaN(args[0]))
-        rm.setDescription(`**Usage:** \`${GuildDB.prefix}remove [track]\``);
+        rm.setDescription(`**用法:** \`${GuildDB.prefix}remove [track]\``);
       if (args[0] > player.queue.length)
-        rm.setDescription(`The queue has only ${player.queue.length} songs!`);
+        rm.setDescription(`隊列中只有 ${player.queue.length} 首歌曲!`);
       await interaction.send(rm);
       player.queue.remove(Number(args[0]) - 1);
     },
