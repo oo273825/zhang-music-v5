@@ -5,7 +5,7 @@ const moment = require("moment");
 
 module.exports = {
   name: "stats",
-  description: "Get information about the bot",
+  description: "獲取有關張先生的所有信息",
   usage: "",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -31,58 +31,39 @@ module.exports = {
 
       const embed = new MessageEmbed();
       embed.setColor(client.botconfig.EmbedColor);
-      embed.setTitle(`Stats from \`${client.user.username}\``);
+      embed.setTitle(`關於 \`${client.user.username}\` 所有的所有`);
       embed.addFields(
         {
-          name: ":ping_pong: Ping",
+          name: ":goat: Ping",
           value: `┕\`${Math.round(client.ws.ping)}ms\``,
           inline: true,
         },
         {
-          name: ":clock1: Uptime",
+          name: ":clock1: 上線時間",
           value: `┕\`${duration}\``,
           inline: true,
         },
         {
-          name: ":file_cabinet: Memory",
-          value: `┕\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(
-            2
-          )}mb\``,
+          name: ":tada: 紀念日",
+          value: `┕\`11月25日\``,
           inline: true,
         }
       );
 
       embed.addFields(
         {
-          name: ":homes: Servers",
-          value: `┕\`${client.guilds.cache.size}\``,
+          name: ":poop: 代號",
+          value: `┕\`F\``,
           inline: true,
         },
         {
-          name: ":busts_in_silhouette: Users",
-          value: `┕\`${client.users.cache.size}\``,
+          name: ":flag_tw: 編碼",
+          value: `┕\`130376371\``,
           inline: true,
         },
         {
-          name: ":control_knobs: API Latency",
-          value: `┕\`${message.client.ws.ping}ms\``,
-          inline: true,
-        }
-      );
-      embed.addFields(
-        {
-          name: ":robot: Version",
-          value: `┕\`v${require("../package.json").version}\``,
-          inline: true,
-        },
-        {
-          name: ":blue_book: Discord.js",
-          value: `┕\`v${version}\``,
-          inline: true,
-        },
-        {
-          name: ":green_book: Node",
-          value: `┕\`${process.version}\``,
+          name: ":microphone: 最想當",
+          value: `┕\`歌手\``,
           inline: true,
         }
       );
@@ -110,61 +91,42 @@ module.exports = {
 
         const embed = new MessageEmbed();
         embed.setColor(client.botconfig.EmbedColor);
-        embed.setTitle(`Stats from \`${client.user.username}\``);
+        embed.setTitle(`關於 \`${client.user.username}\` 所有的所有`);
         embed.addFields(
-          {
-            name: ":ping_pong: Ping",
-            value: `┕\`${Math.round(client.ws.ping)}ms\``,
-            inline: true,
-          },
-          {
-            name: ":clock1: Uptime",
-            value: `┕\`${duration}\``,
-            inline: true,
-          },
-          {
-            name: ":file_cabinet: Memory",
-            value: `┕\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(
-              2
-            )}mb\``,
-            inline: true,
-          }
-        );
+        {
+          name: ":goat: Ping",
+          value: `┕\`${Math.round(client.ws.ping)}ms\``,
+          inline: true,
+        },
+        {
+          name: ":clock1: 上線時間",
+          value: `┕\`${duration}\``,
+          inline: true,
+        },
+        {
+          name: ":tada: 紀念日",
+          value: `┕\`11月25日\``,
+          inline: true,
+        }
+      );
 
-        embed.addFields(
-          {
-            name: ":homes: Servers",
-            value: `┕\`${client.guilds.cache.size}\``,
-            inline: true,
-          },
-          {
-            name: ":busts_in_silhouette: Users",
-            value: `┕\`${client.users.cache.size}\``,
-            inline: true,
-          },
-          {
-            name: ":control_knobs: API Latency",
-            value: `┕\`${client.ws.ping}ms\``,
-            inline: true,
-          }
-        );
-        embed.addFields(
-          {
-            name: ":robot: Version",
-            value: `┕\`v${require("../package.json").version}\``,
-            inline: true,
-          },
-          {
-            name: ":blue_book: Discord.js",
-            value: `┕\`v${version}\``,
-            inline: true,
-          },
-          {
-            name: ":green_book: Node",
-            value: `┕\`${process.version}\``,
-            inline: true,
-          }
-        );
+      embed.addFields(
+        {
+          name: ":poop: 代號",
+          value: `┕\`F\``,
+          inline: true,
+        },
+        {
+          name: ":flag_tw: 編碼",
+          value: `┕\`130376371\``,
+          inline: true,
+        },
+        {
+          name: ":microphone: 最想當",
+          value: `┕\`歌手\``,
+          inline: true,
+        }
+      );
 
         return interaction.send(embed);
       });
