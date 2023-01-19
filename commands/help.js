@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "help",
-  description: "Information about the bot",
+  description: "查看張先生的所有功能",
   usage: "[command]",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -26,22 +26,18 @@ module.exports = {
 
     let Embed = new MessageEmbed()
       .setAuthor(
-        `Commands of ${client.user.username}`,
+        ` ${client.user.username} 的所有指令`,
         client.botconfig.IconURL
       )
       .setColor(client.botconfig.EmbedColor)
       .setFooter(
-        `To get info of each command type ${
+        `獲得每項指令信息 -使用 ${
           GuildDB ? GuildDB.prefix : client.botconfig.DefaultPrefix
-        }help [Command] | Have a nice day!`
+        }help [Command] | 祝你有個美好的屁眼日!`
       ).setDescription(`${Commands.join("\n")}
   
-  Discord Music Bot Version: v${require("../package.json").version}
-  [✨ Support Server](${
-    client.botconfig.SupportServer
-  }) | [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot) | [Dashboard](${
-      client.botconfig.Website
-    }) | By [SudhanPlayz](https://github.com/SudhanPlayz)`);
+  
+  [:angel: Follow我](https://www.instagram.com/chen.y32/) | [Vlog](https://www.youtube.com/channel/UC1KP1wS1JoFtDfhcgt87pow) | [最愛的歌](https://www.youtube.com/watch?v=v7y2Xdg_MZ8) | By [Daniel  Hung](https://danielhung4857.webnode.tw/)`);
     if (!args[0]) message.channel.send(Embed);
     else {
       let cmd =
@@ -88,7 +84,7 @@ module.exports = {
     options: [
       {
         name: "command",
-        description: "Get information on a specific command",
+        description: "取得特定命令的訊息",
         value: "command",
         type: 3,
         required: false,
@@ -112,22 +108,18 @@ module.exports = {
 
       let Embed = new MessageEmbed()
         .setAuthor(
-          `Commands of ${client.user.username}`,
+          ` ${client.user.username} 的所有指令`,
           client.botconfig.IconURL
         )
         .setColor(client.botconfig.EmbedColor)
         .setFooter(
-          `To get info of each command type ${
+          `獲得每項指令信息 -使用 ${
             GuildDB ? GuildDB.prefix : client.botconfig.DefaultPrefix
-          }help [Command] | Have a nice day!`
+          }help [Command] | 祝你有個美好的屁眼日!`
         ).setDescription(`${Commands.join("\n")}
   
-  Discord Music Bot Version: v${require("../package.json").version}
-  [✨ Support Server](${
-    client.botconfig.SupportServer
-  }) | [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot) | [Dashboard](${
-        client.botconfig.Website
-      }) | By [SudhanPlayz](https://github.com/SudhanPlayz)`);
+  
+  [:angel: Follow我](https://www.instagram.com/chen.y32/) | [Vlog](https://www.youtube.com/channel/UC1KP1wS1JoFtDfhcgt87pow) | [最愛的歌](https://www.youtube.com/watch?v=v7y2Xdg_MZ8) | By [Daniel  Hung](https://danielhung4857.webnode.tw/)`);
       if (!args) return interaction.send(Embed);
       else {
         let cmd =
@@ -138,7 +130,7 @@ module.exports = {
         if (!cmd)
           return client.sendTime(
             interaction,
-            `❌ | Unable to find that command.`
+            `❌ | 無法找到該命令`
           );
 
         let embed = new MessageEmbed()
