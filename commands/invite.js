@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "invite",
-  description: "To invite me to your server",
+  description: "邀請張先生去你家玩",
   usage: "",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -19,12 +19,12 @@ module.exports = {
   run: async (client, message, args, { GuildDB }) => {
     let embed = new MessageEmbed()
       .setAuthor(
-        "Invite " + client.user.tag + " to your server!",
+        "邀請 " + client.user.tag + " 到你的伺服器中!",
         client.user.displayAvatarURL()
       )
       .setColor("BLUE")
       .setDescription(
-        `You can invite me by clicking [here](https://discord.com/oauth2/authorize?client_id=${
+        `點擊來邀請 [here](https://discord.com/oauth2/authorize?client_id=${
           client.botconfig.ClientID
         }&permissions=${
           client.botconfig.Permissions
@@ -45,12 +45,12 @@ module.exports = {
     run: async (client, interaction, args, { GuildDB }) => {
       let embed = new MessageEmbed()
         .setAuthor(
-          "Invite " + client.user.tag + " to your server!",
+          "邀請 " + client.user.tag + " 到你的伺服器中!",
           client.user.displayAvatarURL()
         )
         .setColor("BLUE")
         .setDescription(
-          `You can invite me by clicking [here](https://discord.com/oauth2/authorize?client_id=${
+          `點擊來邀請 [here](https://discord.com/oauth2/authorize?client_id=${
             client.botconfig.ClientID
           }&permissions=${
             client.botconfig.Permissions
