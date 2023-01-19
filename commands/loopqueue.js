@@ -3,7 +3,7 @@ const { TrackUtils } = require("erela.js");
 
 module.exports = {
   name: "loopqueue",
-  description: "Loop the whole queue",
+  description: "循環播放整個隊列中的歌曲",
   usage: "",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -22,12 +22,12 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **現在沒有播放的曲目...**"
       );
     if (!message.member.voice.channel)
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in a voice channel to use this command!**"
+        "❌ | **你必須先加入語音頻道!**"
       );
     if (
       message.guild.me.voice.channel &&
@@ -35,15 +35,15 @@ module.exports = {
     )
       return client.sendTime(
         message.channel,
-        "❌ | **You must be in the same voice channel as me to use this command!**"
+        "❌ | **你必須和張先生在同一個語音頻道才能使用這個命令!**"
       );
 
     if (player.queueRepeat) {
       player.setQueueRepeat(false);
-      client.sendTime(message.channel, `:repeat: Queue Loop \`disabled\``);
+      client.sendTime(message.channel, `:repeat: 隊列循環 \`關閉\``);
     } else {
       player.setQueueRepeat(true);
-      client.sendTime(message.channel, `:repeat: Queue Loop \`enabled\``);
+      client.sendTime(message.channel, `:repeat: 隊列循環 \`啟用\``);
     }
   },
   SlashCommand: {
@@ -63,12 +63,12 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **現在沒有播放的曲目...**"
         );
       if (!member.voice.channel)
         return client.sendTime(
           interaction,
-          "❌ | **You must be in a voice channel to use this command.**"
+          "❌ | **你必須先加入語音頻道!**"
         );
       if (
         guild.me.voice.channel &&
@@ -76,15 +76,15 @@ module.exports = {
       )
         return client.sendTime(
           interaction,
-          "❌ | **You must be in the same voice channel as me to use this command!**"
+          "❌ | **你必須和張先生在同一個語音頻道才能使用這個命令!**"
         );
 
       if (player.queueRepeat) {
         player.setQueueRepeat(false);
-        client.sendTime(interaction, `:repeat: **Queue Loop** \`disabled\``);
+        client.sendTime(interaction, `:repeat: **隊列循環** \`關閉\``);
       } else {
         player.setQueueRepeat(true);
-        client.sendTime(interaction, `:repeat: **Queue Loop** \`enabled\``);
+        client.sendTime(interaction, `:repeat: **隊列循環** \`啟用\``);
       }
       console.log(interaction.data);
     },
