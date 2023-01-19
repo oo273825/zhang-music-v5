@@ -4,7 +4,7 @@ const prettyMilliseconds = require("pretty-ms");
 
 module.exports = {
   name: "queue",
-  description: "Shows all currently enqueued songs",
+  description: "顯示當前隊列裡的所有歌曲",
   usage: "",
   permissions: {
     channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
@@ -23,19 +23,19 @@ module.exports = {
     if (!player)
       return client.sendTime(
         message.channel,
-        "❌ | **Nothing is playing right now...**"
+        "❌ | **現在沒有播放的曲目...**"
       );
 
     if (!player.queue || !player.queue.length || player.queue === 0) {
       let QueueEmbed = new MessageEmbed()
-        .setAuthor("Currently playing", client.botconfig.IconURL)
+        .setAuthor("現正播放", client.botconfig.IconURL)
         .setColor(client.botconfig.EmbedColor)
         .setDescription(
           `[${player.queue.current.title}](${player.queue.current.uri})`
         )
-        .addField("Requested by", `${player.queue.current.requester}`, true)
+        .addField("點播者", `${player.queue.current.requester}`, true)
         .addField(
-          "Duration",
+          "歌曲時間",
           `${
             client.ProgressBar(
               player.position,
@@ -67,26 +67,26 @@ module.exports = {
             {
               colonNotation: true,
             }
-          )}\` **|** Requested by: ${t.requester}\n`
+          )}\` **|** 點播者: ${t.requester}\n`
       ).join("\n");
 
       let Embed = new MessageEmbed()
-        .setAuthor("Queue", client.botconfig.IconURL)
+        .setAuthor("歌曲隊列", client.botconfig.IconURL)
         .setColor(client.botconfig.EmbedColor)
         .setDescription(
-          `**Currently Playing:** \n[${player.queue.current.title}](${player.queue.current.uri}) \n\n**Up Next:** \n${SongsDescription}\n\n`
+          `**正在播放:** \n[${player.queue.current.title}](${player.queue.current.uri}) \n\n**即將播放:** \n${SongsDescription}\n\n`
         )
-        .addField("Total songs: \n", `\`${player.queue.totalSize - 1}\``, true)
+        .addField("點播曲目: \n", `\`${player.queue.totalSize - 1}\``, true)
         .addField(
-          "Total length: \n",
+          "點播歌曲總時間: \n",
           `\`${prettyMilliseconds(player.queue.duration, {
             colonNotation: true,
           })}\``,
           true
         )
-        .addField("Requested by:", `${player.queue.current.requester}`, true)
+        .addField("點播者:", `${player.queue.current.requester}`, true)
         .addField(
-          "Current song duration:",
+          "正在播放的歌曲時間:",
           `${
             client.ProgressBar(
               player.position,
@@ -116,7 +116,7 @@ module.exports = {
           value: "[page]",
           type: 4,
           required: false,
-          description: "Enter the page of the queue you would like to view",
+          description: "輸入要查看的隊列頁面",
       },
   ],
   */
@@ -132,19 +132,19 @@ module.exports = {
       if (!player)
         return client.sendTime(
           interaction,
-          "❌ | **Nothing is playing right now...**"
+          "❌ | **現在沒有播放的曲目...**"
         );
 
       if (!player.queue || !player.queue.length || player.queue === 0) {
         let QueueEmbed = new MessageEmbed()
-          .setAuthor("Currently playing", client.botconfig.IconURL)
+          .setAuthor("現正播放", client.botconfig.IconURL)
           .setColor(client.botconfig.EmbedColor)
           .setDescription(
             `[${player.queue.current.title}](${player.queue.current.uri})`
           )
-          .addField("Requested by", `${player.queue.current.requester}`, true)
+          .addField("點播者", `${player.queue.current.requester}`, true)
           .addField(
-            "Duration",
+            "歌曲時間",
             `${
               client.ProgressBar(
                 player.position,
@@ -175,30 +175,30 @@ module.exports = {
               t.uri
             }) \n\`${prettyMilliseconds(t.duration, {
               colonNotation: true,
-            })}\` **|** Requested by: ${t.requester}\n`
+            })}\` **|** 點播者: ${t.requester}\n`
         ).join("\n");
 
         let Embed = new MessageEmbed()
-          .setAuthor("Queue", client.botconfig.IconURL)
+          .setAuthor("歌曲隊列", client.botconfig.IconURL)
           .setColor(client.botconfig.EmbedColor)
           .setDescription(
-            `**Currently Playing:** \n[${player.queue.current.title}](${player.queue.current.uri}) \n\n**Up Next:** \n${SongsDescription}\n\n`
+            `**正在播放:** \n[${player.queue.current.title}](${player.queue.current.uri}) \n\n**即將播放:** \n${SongsDescription}\n\n`
           )
           .addField(
-            "Total songs: \n",
+            "點播曲目: \n",
             `\`${player.queue.totalSize - 1}\``,
             true
           )
           .addField(
-            "Total length: \n",
+            "點播歌曲總時間: \n",
             `\`${prettyMilliseconds(player.queue.duration, {
               colonNotation: true,
             })}\``,
             true
           )
-          .addField("Requested by:", `${player.queue.current.requester}`, true)
+          .addField("點播者:", `${player.queue.current.requester}`, true)
           .addField(
-            "Current song duration:",
+            "正在播放的歌曲時間:",
             `${
               client.ProgressBar(
                 player.position,
